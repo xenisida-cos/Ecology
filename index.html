@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Збережемо природу рідного краю</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* Art direction: ecology / nature preservation → organic, earthy, trustworthy
+   Palette: deep forest green accent on warm off-white surfaces
+   Typography: Playfair Display (display) + Work Sans (body)
+   Density: spacious editorial */
+
+:root,[data-theme="light"]{
+  --color-bg:#f5f4ef;
+  --color-surface:#faf9f6;
+  --color-surface-2:#ffffff;
+  --color-surface-offset:#eeecea;
+  --color-divider:#dddbd6;
+  --color-border:#d0cec9;
+  --color-text:#1e1d18;
+  --color-text-muted:#6b6a65;
+  --color-text-faint:#b0afa9;
+  --color-text-inverse:#f5f4ef;
+  --color-primary:#1a5c2e;
+  --color-primary-hover:#134823;
+  --color-primary-active:#0d3318;
+  --color-primary-light:#deeee4;
+  --color-accent:#3d8b5a;
+  --radius-sm:0.375rem;
+  --radius-md:0.5rem;
+  --radius-lg:0.75rem;
+  --radius-xl:1rem;
+  --radius-full:9999px;
+  --shadow-sm:0 1px 3px oklch(0.15 0.03 140/0.07);
+  --shadow-md:0 4px 16px oklch(0.15 0.03 140/0.09);
+  --shadow-lg:0 12px 40px oklch(0.15 0.03 140/0.13);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Work Sans','Helvetica Neue',sans-serif;
+  --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+  --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+  --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --text-3xl:clamp(2.5rem,1rem + 4vw,5rem);
+  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
+  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+  --space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
+  --content-narrow:640px;--content-default:900px;--content-wide:1140px;
+  --transition:180ms cubic-bezier(0.16,1,0.3,1);
+}
+[data-theme="dark"]{
+  --color-bg:#141a16;
+  --color-surface:#192010;--color-surface-2:#1e2a18;
+  --color-surface-offset:#172014;
+  --color-divider:#253022;--color-border:#2e3d28;
+  --color-text:#d4d8cf;--color-text-muted:#7a8074;--color-text-faint:#4e5449;
+  --color-text-inverse:#141a16;
+  --color-primary:#5db57a;--color-primary-hover:#43a063;--color-primary-active:#2e8a4e;
+  --color-primary-light:#1e3528;--color-accent:#6bc885;
+  --shadow-sm:0 1px 3px oklch(0/0.25);--shadow-md:0 4px 16px oklch(0/0.35);--shadow-lg:0 12px 40px oklch(0/0.45);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --color-bg:#141a16;--color-surface:#192010;--color-surface-2:#1e2a18;
+  --color-surface-offset:#172014;--color-divider:#253022;--color-border:#2e3d28;
+  --color-text:#d4d8cf;--color-text-muted:#7a8074;--color-text-faint:#4e5449;
+  --color-text-inverse:#141a16;
+  --color-primary:#5db57a;--color-primary-hover:#43a063;--color-primary-active:#2e8a4e;
+  --color-primary-light:#1e3528;--color-accent:#6bc885;
+  --shadow-sm:0 1px 3px oklch(0/0.25);--shadow-md:0 4px 16px oklch(0/0.35);--shadow-lg:0 12px 40px oklch(0/0.45);
+}}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;scroll-padding-top:5rem;}
+body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.7;}
+img{display:block;max-width:100%;height:auto;}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.15;}
+p,li{text-wrap:pretty;}
+a,button,[role="button"]{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition),opacity var(--transition);}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* ─── SKIP LINK ─── */
+.skip-link{position:absolute;top:-40px;left:var(--space-4);background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;z-index:999;}
+.skip-link:focus{top:var(--space-4);}
+
+/* ─── HEADER / NAV ─── */
+header{position:sticky;top:0;z-index:100;background:oklch(from var(--color-bg) l c h / 0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--color-divider);}
+.header-inner{max-width:var(--content-wide);margin-inline:auto;padding:0 var(--space-6);height:64px;display:flex;align-items:center;gap:var(--space-6);}
+.logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;flex-shrink:0;}
+.logo svg{width:36px;height:36px;color:var(--color-primary);}
+.logo-text{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text);line-height:1.2;}
+nav{display:flex;gap:var(--space-1);margin-left:auto;}
+nav a{text-decoration:none;color:var(--color-text-muted);font-size:var(--text-sm);font-weight:500;padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);white-space:nowrap;}
+nav a:hover{color:var(--color-text);background:var(--color-surface-offset);}
+nav a.active{color:var(--color-primary);font-weight:600;background:var(--color-primary-light);}
+.theme-toggle{width:36px;height:36px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);border:1px solid var(--color-border);}
+.theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset);}
+.mobile-menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;border-radius:var(--radius-md);color:var(--color-text-muted);}
+
+/* ─── PAGES ─── */
+.page{display:none;animation:fadeIn .25s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* ─── HERO ─── */
+.hero{background:var(--color-primary);color:var(--color-text-inverse);padding:clamp(var(--space-16),10vw,var(--space-24)) var(--space-6);text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='white' fill-opacity='.06'/%3E%3C/svg%3E");pointer-events:none;}
+.hero-badge{display:inline-block;background:oklch(from var(--color-text-inverse) l c h / 0.15);border:1px solid oklch(from var(--color-text-inverse) l c h / 0.2);border-radius:var(--radius-full);padding:var(--space-1) var(--space-4);font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--space-6);}
+.hero h1{font-family:var(--font-display);font-size:var(--text-3xl);font-weight:900;max-width:18ch;margin-inline:auto;margin-bottom:var(--space-6);line-height:1.05;}
+.hero p{font-size:var(--text-lg);opacity:.85;max-width:55ch;margin-inline:auto;margin-bottom:var(--space-10);}
+.hero-btns{display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--color-text-inverse);color:var(--color-primary);padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);font-weight:700;font-size:var(--text-sm);text-decoration:none;border:none;cursor:pointer;}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px);}
+.btn-ghost{border:2px solid oklch(from var(--color-text-inverse) l c h / 0.4);color:var(--color-text-inverse);padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);font-weight:600;font-size:var(--text-sm);text-decoration:none;cursor:pointer;}
+.btn-ghost:hover{border-color:var(--color-text-inverse);background:oklch(from var(--color-text-inverse) l c h / 0.1);}
+
+/* ─── SECTION LAYOUT ─── */
+.section{padding:clamp(var(--space-12),7vw,var(--space-24)) var(--space-6);}
+.section-alt{background:var(--color-surface);}
+.container{max-width:var(--content-default);margin-inline:auto;}
+.container-wide{max-width:var(--content-wide);margin-inline:auto;}
+.section-label{font-size:var(--text-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-3);}
+.section-title{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:900;color:var(--color-text);margin-bottom:var(--space-6);line-height:1.1;}
+.section-body{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.8;max-width:68ch;}
+.section-body p+p{margin-top:var(--space-5);}
+
+/* ─── ARTICLE LAYOUT (home) ─── */
+.article-grid{display:grid;grid-template-columns:1fr;gap:var(--space-12);}
+@media(min-width:768px){.article-grid{grid-template-columns:1.4fr 1fr;gap:var(--space-16);align-items:start;}}
+.article-image{border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/3;background:var(--color-primary-light);}
+.article-image img{width:100%;height:100%;object-fit:cover;}
+.article-links{margin-top:var(--space-8);display:flex;flex-direction:column;gap:var(--space-3);}
+.article-link{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-decoration:none;color:var(--color-text);box-shadow:var(--shadow-sm);}
+.article-link:hover{box-shadow:var(--shadow-md);border-color:var(--color-primary-light);}
+.article-link-icon{width:36px;height:36px;border-radius:var(--radius-md);background:var(--color-primary-light);color:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.article-link-text strong{display:block;font-weight:600;font-size:var(--text-sm);}
+.article-link-text span{font-size:var(--text-xs);color:var(--color-text-muted);}
+
+/* ─── PROBLEM CARDS ─── */
+.problems-intro{margin-bottom:var(--space-12);}
+.problems-grid{display:grid;gap:var(--space-4);}
+@media(min-width:640px){.problems-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:960px){.problems-grid{grid-template-columns:repeat(3,1fr);}}
+.problem-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-sm);transition:box-shadow var(--transition),transform var(--transition);}
+.problem-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.problem-number{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:900;color:var(--color-primary-light);line-height:1;margin-bottom:var(--space-3);}
+.problem-title{font-weight:700;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-3);}
+.problem-body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;}
+
+/* ─── NATURE / PRESERVATION ─── */
+.nature-hero{background:var(--color-primary);color:var(--color-text-inverse);border-radius:var(--radius-xl);padding:clamp(var(--space-10),6vw,var(--space-16)) var(--space-8);margin-bottom:var(--space-12);}
+.nature-hero h2{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-4);line-height:1.1;}
+.nature-hero p{font-size:var(--text-base);opacity:.88;max-width:60ch;line-height:1.75;}
+.tips-grid{display:grid;gap:var(--space-4);margin-bottom:var(--space-12);}
+@media(min-width:640px){.tips-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.tips-grid{grid-template-columns:repeat(3,1fr);}}
+.tip-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-6);}
+.tip-card svg{width:24px;height:24px;color:var(--color-primary);margin-bottom:var(--space-3);}
+.tip-title{font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2);color:var(--color-text);}
+.tip-body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;}
+.infographic-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-8);text-align:center;}
+.infographic-section h3{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;margin-bottom:var(--space-3);color:var(--color-text);}
+.infographic-section p{font-size:var(--text-sm);color:var(--color-text-muted);max-width:56ch;margin-inline:auto;margin-bottom:var(--space-6);}
+.infographic-img{border-radius:var(--radius-lg);overflow:hidden;max-width:700px;margin-inline:auto;}
+.infographic-img img{width:100%;height:auto;}
+.infographic-source{margin-top:var(--space-4);font-size:var(--text-xs);color:var(--color-text-faint);}
+.infographic-source a{color:var(--color-primary);text-decoration:none;}
+.infographic-source a:hover{text-decoration:underline;}
+
+/* ─── MOBILE NAV ─── */
+@media(max-width:720px){
+  nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--color-surface-2);border-bottom:1px solid var(--color-divider);flex-direction:column;padding:var(--space-3) var(--space-4);gap:var(--space-1);box-shadow:var(--shadow-md);}
+  nav.open{display:flex;}
+  nav a{padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);}
+  .mobile-menu-btn{display:flex;}
+}
+
+/* ─── FOOTER ─── */
+footer{border-top:1px solid var(--color-divider);padding:var(--space-8) var(--space-6);text-align:center;}
+footer p{font-size:var(--text-xs);color:var(--color-text-faint);}
+footer a{color:var(--color-primary);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+
+/* ─── DIVIDER ─── */
+.divider{height:1px;background:var(--color-divider);margin:var(--space-12) 0;}
+
+/* ─── STAT ROW ─── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-4);margin-top:var(--space-10);}
+.stat-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);text-align:center;}
+.stat-number{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:900;color:var(--color-primary);line-height:1;}
+.stat-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-2);}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Перейти до вмісту</a>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <!-- SVG LOGO -->
+    <a href="#" class="logo" onclick="showPage('home',event)">
+      <svg viewBox="0 0 36 36" fill="none" aria-label="Логотип — листок" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 4C18 4 6 10 6 20c0 6.627 5.373 12 12 12s12-5.373 12-12C30 10 18 4 18 4z" fill="currentColor" opacity=".18"/>
+        <path d="M18 6C18 6 8 12 8 20a10 10 0 0 0 20 0C28 12 18 6 18 6z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <path d="M18 32V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M18 22 l-5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M18 18 l5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">Збережемо<br>природу</span>
+    </a>
+
+    <nav id="main-nav">
+      <a href="#" class="active" data-page="home" onclick="showPage('home',event)">Головна</a>
+      <a href="#" data-page="ecology" onclick="showPage('ecology',event)">Екологічні проблеми</a>
+      <a href="#" data-page="nature" onclick="showPage('nature',event)">Збереження природи</a>
+    </nav>
+
+    <button class="theme-toggle" data-theme-toggle aria-label="Змінити тему">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Меню">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══════════════════════════════════
+     PAGE 1 — HOME
+═══════════════════════════════════ -->
+<div id="home" class="page active">
+
+  <section class="hero">
+    <div class="hero-badge">Природа рідного краю</div>
+    <h1>Рідний край</h1>
+    <p>Я люблю свій рідний край за його неповторну красу — зелені ліси, чисті річки та безмежні поля. Цей сайт присвячений висвітленню екологічних проблем нашого краю та пошуку шляхів їх подолання.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showPage('ecology',event)">Екологічні проблеми</button>
+      <button class="btn-ghost" onclick="showPage('nature',event)">Збереження природи</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="article-grid">
+        <div>
+          <p class="section-label">Про сайт</p>
+          <h2 class="section-title">Природа, яку варто зберегти</h2>
+          <div class="section-body">
+            <p>Я хочу бачити свій край здоровим і чистим — місцем, де майбутні покоління зможуть насолоджуватися тією самою красою, яка оточує нас сьогодні.</p>
+            <p>Україна — одна з найбагатших на природні ресурси країн Європи. Проте екологічні проблеми загрожують цьому багатству. Тут зібрано інформацію про головні виклики та шляхи їх подолання.</p>
+          </div>
+          <div class="article-links">
+            <a href="#" class="article-link" onclick="showPage('ecology',event)">
+              <span class="article-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </span>
+              <span class="article-link-text">
+                <strong>Сім екологічних проблем</strong>
+                <span>Дізнайтесь про головні загрози природі України</span>
+              </span>
+            </a>
+            <a href="#" class="article-link" onclick="showPage('nature',event)">
+              <span class="article-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12C12 7 7 4 2 5.5M12 12C12 7 17 4 22 5.5"/></svg>
+              </span>
+              <span class="article-link-text">
+                <strong>Збереження природи</strong>
+                <span>Практичні поради та інфографіка про біорізноманіття</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="article-image">
+            <img src="https://picsum.photos/seed/ukraineforest/600/480" alt="Природа України — ліс" width="600" height="480" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">45 000+</div>
+          <div class="stat-label">видів тварин в Україні</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">27 000</div>
+          <div class="stat-label">видів рослин</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">національних природних парків</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">800+</div>
+          <div class="stat-label">видів під загрозою (Червона книга)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 2 — ЕКОЛОГІЧНІ ПРОБЛЕМИ
+═══════════════════════════════════ -->
+<div id="ecology" class="page">
+
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-label">Екологія України</p>
+      <h2 class="section-title">Сім екологічних проблем України</h2>
+      <p class="section-body" style="max-width:65ch;">Україна стикається з серйозними екологічними викликами, що накопичувались десятиліттями. Ось сім найгостріших проблем, які потребують вирішення.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide">
+      <div class="problems-grid">
+
+        <article class="problem-card">
+          <div class="problem-number">01</div>
+          <h3 class="problem-title">Неякісна вода</h3>
+          <p class="problem-body">Промислові підприємства, сільськогосподарські угіддя та побутові стоки забруднюють річки і підземні води. Понад 70% поверхневих водойм України не відповідають стандартам питної води. Особливо гострою проблема є у промислових регіонах — Донбасі та Придніпров'ї.</p>
+        </article>
+
+        <article class="problem-card">
+          <div class="problem-number">02</div>
+          <h3 class="problem-title">Забруднення повітря</h3>
+          <p class="problem-body">Підприємства металургії, хімічної промисловості та теплові електростанції — основні джерела забруднення. Запоріжжя та Кривий Ріг входять до переліку найбільш забруднених міст. Транспортні викиди також суттєво погіршують якість повітря у мегаполісах.</p>
+        </article>
+
+        <article class="problem-card">
+          <div class="problem-number">03</div>
+          <h3 class="problem-title">Забруднення ґрунтів</h3>
+          <p class="problem-body">Інтенсивне використання пестицидів та мінеральних добрив у сільському господарстві призводить до деградації ґрунтів. Промислові відходи та несанкціоновані звалища отруюють землю. Чорнобильська зона залишається радіаційно забрудненою.</p>
+        </article>
+
+        <article class="problem-card">
+          <div class="problem-number">04</div>
+          <h3 class="problem-title">Знищення лісів</h3>
+          <p class="problem-body">Незаконна вирубка лісів є серйозною проблемою для Карпат та Полісся. Щороку вирубується значно більше лісу, ніж відновлюється. Це призводить до ерозії ґрунтів та погіршення водного балансу.</p>
+        </article>
+
+        <article class="problem-card">
+          <div class="problem-number">05</div>
+          <h3 class="problem-title">Втрата біорізноманіття</h3>
+          <p class="problem-body">Через знищення природних середовищ існування багато видів тварин і рослин опинились під загрозою зникнення. До Червоної книги України занесено понад 800 видів. Осушення боліт та розорювання степів скорочують площу екосистем.</p>
+        </article>
+
+        <article class="problem-card">
+          <div class="problem-number">06</div>
+          <h3 class="problem-title">Сміттєва криза</h3>
+          <p class="problem-body">Україна виробляє мільйони тонн побутових відходів щороку, тоді як роздільний збір сміття залишається слабко розвиненим. Переповнені полігони загрожують ґрунтовим водам. Бракує сміттєпереробних заводів.</p>
+        </article>
+
+        <article class="problem-card" style="grid-column:1/-1;max-width:360px;">
+          <div class="problem-number">07</div>
+          <h3 class="problem-title">Чорнобильська катастрофа</h3>
+          <p class="problem-body">Аварія 1986 року залишила глибокий слід в екології України. Зона відчуження площею понад 2600 км² досі закрита для проживання. Реабілітація забруднених територій триватиме ще багато десятиліть.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 3 — ЗБЕРЕЖЕННЯ ПРИРОДИ
+═══════════════════════════════════ -->
+<div id="nature" class="page">
+
+  <section class="section">
+    <div class="container">
+
+      <div class="nature-hero">
+        <p class="section-label" style="color:oklch(from var(--color-text-inverse) l c h / 0.7);">Збереження природи</p>
+        <h2>Як зберегти природу рідного краю</h2>
+        <p>Екологічні проблеми здаються глобальними, але їх вирішення починається з дій кожної людини. Зміна звичок у повсякденному житті та активна громадянська позиція можуть суттєво вплинути на стан довкілля.</p>
+      </div>
+
+      <p class="section-label">Що може зробити кожен</p>
+      <h3 class="section-title">Практичні кроки</h3>
+
+      <div class="tips-grid">
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+          <p class="tip-title">Роздільний збір сміття</p>
+          <p class="tip-body">Сортуй відходи на папір, пластик, скло та органіку. Це дозволяє переробити більшу частину відходів і зменшити навантаження на полігони.</p>
+        </div>
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <p class="tip-title">Економія енергії та води</p>
+          <p class="tip-body">Закривай кран під час чищення зубів, використовуй енергозберігаючі лампочки, не залишай прилади у режимі очікування.</p>
+        </div>
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <p class="tip-title">Відмова від пластику</p>
+          <p class="tip-body">Замість пластикових пакетів використовуй тканинні торбинки. Відмовся від одноразового посуду та соломинок.</p>
+        </div>
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12C12 7 7 4 2 5.5M12 12C12 7 17 4 22 5.5"/></svg>
+          <p class="tip-title">Висаджування дерев</p>
+          <p class="tip-body">Бери участь у місцевих акціях з озеленення. Одне посаджене дерево поглинає до 22 кг вуглекислого газу на рік.</p>
+        </div>
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <p class="tip-title">Підтримка заповідників</p>
+          <p class="tip-body">В Україні існує понад 40 національних природних парків. Дотримуйся правил поведінки у природі.</p>
+        </div>
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <p class="tip-title">Екологічна освіта</p>
+          <p class="tip-body">Поширюй знання про захист природи серед друзів та родини. Разом ми можемо зробити значно більше.</p>
+        </div>
+
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ІНФОГРАФІКА -->
+      <div class="infographic-section">
+        <h3>Біорізноманіття в Україні</h3>
+        <p>Україна — одна з найбагатших на біорізноманіття країн Європи. Збереження цього багатства — наш спільний обов'язок.</p>
+        <div class="infographic-img">
+          <a href="https://mepr.gov.ua" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/04d21060-6a65-472f-ac2e-11a68a10af80.png"
+              alt="Природа України — ліс, річка, квіти"
+              width="700" height="500"
+              loading="lazy"
+              onerror="this.parentElement.parentElement.innerHTML='<div style='padding:3rem;color:var(--color-text-muted);font-size:var(--text-sm);'>Зображення тимчасово недоступне.<br>Переглянути: <a href='https://mepr.gov.ua' target='_blank'>mepr.gov.ua</a></div>'"
+            >
+          </a>
+        </div>
+        <p class="infographic-source">Джерело: <a href="https://mepr.gov.ua" target="_blank" rel="noopener noreferrer">mepr.gov.ua</a> — Міністерство захисту довкілля та природних ресурсів України</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>Сайт створено в рамках навчального проєкту «Веб-ресурси» &nbsp;·&nbsp; Екологія України &nbsp;·&nbsp; <a href="https://mepr.gov.ua" target="_blank" rel="noopener noreferrer">mepr.gov.ua</a></p>
+  <p style="margin-top:0.5rem;font-size:var(--text-xs);color:var(--color-text-muted);">Виконав: <strong style="color:var(--color-text);">Чернишов Михайло</strong>, група П-125</p>
+</footer>
+
+<script>
+// Theme toggle
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  function updateIcon(){
+    if(!t)return;
+    t.innerHTML=d==='dark'
+      ?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      :'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    t.setAttribute('aria-label','Переключити на '+(d==='dark'?'світлу':'темну')+' тему');
+  }
+  updateIcon();
+  t&&t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);updateIcon();});
+})();
+
+// Page routing
+function showPage(id, event) {
+  if(event) event.preventDefault();
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  const page=document.getElementById(id);
+  if(page) page.classList.add('active');
+  const link=document.querySelector('nav a[data-page="'+id+'"]');
+  if(link) link.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  const nav=document.getElementById('main-nav');
+  if(nav) nav.classList.remove('open');
+}
+
+// Mobile menu
+function toggleMobileMenu(){
+  const nav=document.getElementById('main-nav');
+  if(nav) nav.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
